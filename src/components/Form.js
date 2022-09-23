@@ -14,13 +14,20 @@ function Form(){
   }
 
   const [errors, setErrors] = useState([]);
+
   function handleSubmit(event){
     event.preventDefault();
-    const formData = { firstName: firstName, lastName: lastName};
+
+    if (firstName.length > 0){
+      const formData = { firstName: firstName, lastName: lastName};
     const dataArray = [...submittedData, formData];
     setSubmitedData(dataArray);
     setFirstName("");
     setLastName("");  
+    setErrors([])
+    }else {
+      setErrors(["First name is required!"]);
+    }
     
 
   };
